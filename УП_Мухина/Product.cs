@@ -24,8 +24,8 @@ namespace УП_Мухина
         public int ProductName { get; set; }
         public int ProductUnit { get; set; }
         public string ProductDescription { get; set; }
+        public string ProductPhoto { get; set; }
         public int ProductCategory { get; set; }
-        public byte[] ProductPhoto { get; set; }
         public int ProductProvider { get; set; }
         public int ProductManufacturer { get; set; }
         public decimal ProductCost { get; set; }

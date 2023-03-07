@@ -35,12 +35,7 @@ namespace УП_Мухина
         private void Timer_Tick(object sender, EventArgs e)
         {
             time--;
-            tbCode.Text = "Получить новый код можно через " + time + " секунд";
-            if (time < 0)
-            {
-                timer.Stop();
-                tbCode.Visibility = Visibility.Collapsed;
-            }
+            
         }
 
         private void tbAuto_Click(object sender, RoutedEventArgs e)
@@ -53,14 +48,18 @@ namespace УП_Мухина
             }
             else
             {
-                /*WindowCaptcha captcha = new WindowCaptcha(k);
-                captcha.ShowDialog();*/
+
             }
         }
 
         private void tbGuest_Click(object sender, RoutedEventArgs e)
         {
             ClassFrame.frameL.Navigate(new pages.ListOfTovar());
+        }
+
+        private void tbCaptcha_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

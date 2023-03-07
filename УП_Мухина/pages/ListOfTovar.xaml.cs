@@ -49,21 +49,29 @@ namespace УП_Мухина.pages
             //фильтр
             switch (cbFilter.SelectedIndex)
             {
-                case 1:
-
-                    break;
-                case 2:
-
-                    break;
-                case 3:
-
-                    break;
+                //case 1:
+                //    listFilter = listFilter.Where(z => z.ProductDiscountMax >= 0 && z.ProductDiscountMax < 0.999).ToList();
+                //    break;
+                //case 2:
+                //    listFilter = listFilter.Where(z => z.ProductDiscountMax >= 0.10 && z.ProductDiscountMax < 0.1499).ToList();
+                //    break;
+                //case 3:
+                //    listFilter = listFilter.Where(z => z.ProductDiscountMax >= 0.15 && z.ProductDiscountMax < 1).ToList();
+                //    break;
             }
 
             //поиск
             if (!string.IsNullOrWhiteSpace(tbSearch.Text))
             {
                 listFilter = listFilter.Where(x => x.TitleProduct.TitleProduct1.ToLower().Contains(tbSearch.Text.ToLower())).ToList(); //поиск по наименованию
+            }
+
+            tbCountZap.Text = listFilter.Count.ToString() + " из " + DataBase.Base.Product.ToList().Count.ToString(); //количество записей
+
+            ListT.ItemsSource = listFilter;
+            if (listFilter.Count == 0)
+            {
+                MessageBox.Show("нет записей");
             }
         }
 

@@ -12,26 +12,33 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <TextBlock Grid.Row="0" Text="Список товаров" Style="{StaticResource txtHeader}"/>
+        
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"> 
                 <GroupBox Header="Сортировка" Width="185">
                 <ComboBox Name="cbSort" SelectionChanged="cbSort_SelectionChanged" Width="170" Height="30">
                     <ComboBoxItem Content="Без сортировки"/>
                     <ComboBoxItem Content="По возрастанию"/>
                     <ComboBoxItem Content="По убыванию"/>
                 </ComboBox>
-                </GroupBox>
+                </GroupBox>               
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">               
                 <GroupBox Header="Скидка" Width="185">
                     <ComboBox Name="cbFilter" SelectionChanged="cbFilter_SelectionChanged" Width="170" Height="30" Margin="0 5 0 0">
                         <ComboBoxItem Content="Все диапазоны"/>
@@ -40,41 +47,40 @@
                         <ComboBoxItem Content="от 15 до ..%"/>
                     </ComboBox>
                 </GroupBox>
-            </StackPanel>
-            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            </StackPanel> 
+            
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <GroupBox Header="Поиск товаров" Width="185">
                     <TextBox Name="tbSearch" TextChanged="tbSearch_TextChanged" Height="30" Width="170"/>
                 </GroupBox>
             </StackPanel>
-            <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                <TextBlock Name="tbCountZap"/>
-            </StackPanel>
             
-        </Grid>
+            <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Name="tbCountZap"/>
+            </StackPanel>            
+        </Grid>        
 
-        <!--<TextBlock Text="Список товаров" Style="{StaticResource txtHeader}"/>-->
-
-        <ListView Name="ListT" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+        <ListView Name="ListT" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="1" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" >
                         <Grid Name="gridM" Height="250" Background="{Binding ColorDisc}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3.5*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
-                                <Image Width="170" Height="170" Uid="{Binding ID}" Source="{Binding MainImagePath, TargetNullValue={StaticResource NoImage}}"/>
+                                <Image Height="130" Source="{Binding ImagePreview, TargetNullValue={StaticResource NoImage}}" Margin="0, 5, 0, 5"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
                                 <TextBlock Text="{Binding Desc}" TextWrapping="Wrap" />
                                 <TextBlock Text="{Binding Manufact}" TextWrapping="Wrap" />
-                                <TextBlock Text="{Binding Price, StringFormat={}{0:F3} РУБ}"/>
+                                <TextBlock Text="{Binding Price}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
-                                <TextBlock Text="{Binding Discount}"/>                                
+                                <TextBlock Text="{Binding Disc}"/>                                
                             </StackPanel>
                         </Grid>
                     </Border>

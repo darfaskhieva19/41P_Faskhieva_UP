@@ -34,10 +34,10 @@ namespace УП_Мухина
         {
             get
             {
-                return "Цена: " + ProductCost;
+                return "Цена: " + Math.Round(ProductCost) + " руб.";
             }
         }
-        public string Discount
+        public string Disc
         {
             get
             {
