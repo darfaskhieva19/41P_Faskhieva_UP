@@ -20,9 +20,9 @@
             <GroupBox Header="Пароль">
                     <PasswordBox Name="tbPassword"/>
             </GroupBox>
-            <Button Name="tbAuto" Content="Авторизоваться" Width="200" Height="35" Click="tbAuto_Click"/>
+            <Button Name="btAuto" Content="Авторизоваться" Width="200" Height="35" Click="tbAuto_Click"/>
 
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <StackPanel Name="spCaptcha" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
                     <Border Name="borderCap" BorderBrush="Black" BorderThickness="1" Margin="0 10 0 0" Width="275" Height="85">
                         <Canvas Name="CCaptcha" Width="270" Height="80" Background="AliceBlue"/>
                     </Border>
@@ -31,6 +31,7 @@
                             <TextBox Name="tbCaptcha" TextChanged="tbCaptcha_TextChanged"/>
                         </GroupBox>
                     </StackPanel>
+                    <TextBlock Name="tbTime"/>
                 </StackPanel>
 
                 <Button Name="tbGuest" Content="Войти как гость" Width="150" Height="35" Click="tbGuest_Click"/>               

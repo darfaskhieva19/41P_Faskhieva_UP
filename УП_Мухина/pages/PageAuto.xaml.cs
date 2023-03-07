@@ -23,32 +23,41 @@ namespace УП_Мухина
     {
         DispatcherTimer timer = new DispatcherTimer();
         int time = 10;
-
+        string str = String.Empty;
         public PageAuto()
         {
             InitializeComponent();
-            tbPassword.Focus();
+            tbLogin.Focus();
+            btAuto.IsEnabled = false;
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += new EventHandler(Timer_Tick);
+            timer.Start();
+            tbTime.Visibility = Visibility.Visible;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             time--;
-            
+            tbTime.Text = " " + time + " секунд";
+            if (time < 0)
+            {
+                timer.Stop();
+                btAuto.IsEnabled = true;
+                tbTime.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void tbAuto_Click(object sender, RoutedEventArgs e)
         {
             User user = DataBase.Base.User.FirstOrDefault(z => z.UserLogin == tbLogin.Text && z.UserPassword == tbPassword.Password);
-            if (user != null)
+            if (user==null)
             {
-                ClassFrame.frameL.Navigate(new pages.ListOfTovar());
-               // MessageBox.Show("Пользователя не существует!", "Авторизация", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Вы вели данные неверно!");
+                spCaptcha.Visibility = Visibility.Visible;
             }
             else
             {
-
+                ClassFrame.frameL.Navigate(new pages.ListOfTovar());
             }
         }
 
@@ -59,7 +68,13 @@ namespace УП_Мухина
 
         private void tbCaptcha_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (tbCaptcha.Text.Length == str.Length)
+            {
+                if (tbCaptcha.Text == str)
+                {
 
+                }
+            }
         }
     }
 }

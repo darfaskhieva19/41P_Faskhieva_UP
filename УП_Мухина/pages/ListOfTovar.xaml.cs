@@ -88,5 +88,13 @@ namespace УП_Мухина.pages
         {
             Filter();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите выйти?", "Системное сообщение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+
+            }
+        }
     }
 }
