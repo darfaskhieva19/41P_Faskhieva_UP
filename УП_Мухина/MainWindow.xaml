@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:УП_Мухина"
         mc:Ignorable="d"
-        Title="Пиши-стирай" Height="450" Width="800" Icon="/resource/icon.ico">
+        Title="Пиши-стирай" Height="850" Width="1050" Icon="/resource/icon.ico">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Source="/resource/logo.png" Width="65"/>
             <TextBlock Text="Магазин канцелярии *Пиши-стирай*" Name="tbHeader" Style="{StaticResource txtHeader}"/>          
         </StackPanel>

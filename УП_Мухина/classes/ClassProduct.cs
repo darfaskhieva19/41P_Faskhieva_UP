@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace УП_Мухина
 {
@@ -22,14 +23,14 @@ namespace УП_Мухина
                 return ProductDescription;
             }
         }
-        public string Manufact
+        public string Manufact //вывод производителя
         {
             get
             {
                 return "Производитель: " + Manufacturer.ProductManufacturer;
             }
         }
-        public string Price
+        public string Price //вывод цены
         {
             get
             {
@@ -40,7 +41,22 @@ namespace УП_Мухина
         {
             get
             {
-                return "Скидка " + ProductDiscountAmount + " %";
+                return "Скидка " + ProductDiscountMax + " %";
+            }
+        }
+        public SolidColorBrush ColorDisc //товар со скидкой
+        {
+            get
+            {
+                if (ProductDiscountMax>15)
+                {
+                    SolidColorBrush Dis = new SolidColorBrush(Color.FromRgb(127, 255, 0));
+                    return Dis;
+                }
+                else
+                {
+                    return Brushes.White;
+                }
             }
         }
     }
